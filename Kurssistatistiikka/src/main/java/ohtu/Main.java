@@ -3,7 +3,8 @@ package ohtu;
 import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
-
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -15,23 +16,49 @@ public class Main {
         }
         System.out.println("opiskelijanumero " + studentNr+"\n\n");
         String url = "https://studies.cs.helsinki.fi/courses/students/" + studentNr + "/submissions";
-
         String bodyText = Request.Get(url).execute().returnContent().asString();
-
-//        System.out.println("json-muotoinen data:");
-//        System.out.println(bodyText);
-
         String url2 = "https://studies.cs.helsinki.fi/courses/courseinfo";
-
         String bodyText2 = Request.Get(url2).execute().returnContent().asString();
-
-//        System.out.println("json-muotoinen data2:");
-//        System.out.println(bodyText2);
-
+        
+        String ohtus = "https://studies.cs.helsinki.fi/courses/ohtu2018/stats";
+        String bodyText3 = Request.Get(ohtus).execute().returnContent().asString();
+        String rubys = "https://studies.cs.helsinki.fi/courses/rails2018/stats";
+        String bodyText4 = Request.Get(rubys).execute().returnContent().asString();
+        
+        JsonParser parser = new JsonParser();
+        JsonObject parsittuData = parser.parse(bodyText3).getAsJsonObject();
+        JsonObject parsittuData2 = parser.parse(bodyText4).getAsJsonObject();
+        double ohtuaika =0;
+        double ohtuteht =0;
+        double ohtumaar = 0;
+        for (int i = 1; i <= parsittuData.size(); i++) {
+            ohtuaika+=parsittuData.getAsJsonObject(String.valueOf(i)).get("hour_total").getAsDouble();
+            ohtuteht+=parsittuData.getAsJsonObject(String.valueOf(i)).get("exercise_total").getAsDouble();
+            ohtumaar+=parsittuData.getAsJsonObject(String.valueOf(i)).get("exercises").getAsJsonArray().size();
+        }
+        double rubyaika =0;
+        double rubyteht =0;
+        double rubymaar = 0;
+        for (int i = 1; i <= parsittuData2.size(); i++) {
+            rubyaika+=parsittuData2.getAsJsonObject(String.valueOf(i)).get("hour_total").getAsDouble();
+            rubyteht+=parsittuData2.getAsJsonObject(String.valueOf(i)).get("exercise_total").getAsDouble();
+            rubymaar+=parsittuData2.getAsJsonObject(String.valueOf(i)).get("exercises").getAsJsonArray().size();
+        }
+       
+        
+        
+        
         Gson mapper = new Gson();
         Submission[] subs = mapper.fromJson(bodyText, Submission[].class);
         Submission[] subs2 = mapper.fromJson(bodyText2, Submission[].class);
-
+        
+//        Submission[] subs3 = mapper.fromJson(parsittuData, Submission[].class);
+//        int aikaa = 0;
+//        for (Submission submission : subs3) {
+//            aikaa+=submission.getExercisesSum();
+//        }
+//        System.out.println(aikaa+"___________");
+        
         int teht = 0;
         int tunt = 0;
         int teht2 = 0;
@@ -55,8 +82,10 @@ public class Main {
             }
         }
         System.out.println(ruby+"\n"+"yhteensä: "+teht+"/"+subs2[0].getExercisesSum()+" tehtävää "+tunt+" tuntia\n");
+        System.out.println("kurssilla yhteensä "+rubymaar+" palautusta, palautettuja tehtäviä "+rubyteht+" kpl, aikaa käytetty yhteensä "+rubyaika+" tuntia");
+        System.out.println("");
         System.out.println(ohtu+"\n"+"yhteensä "+teht2+"/"+subs2[1].getExercisesSum()+" tehtävää "+tunt2+" tuntia\n");
-     
+        System.out.println("kurssilla yhteensä "+ohtumaar+" palautusta, palautettuja tehtäviä "+ohtuteht+" kpl, aikaa käytetty yhteensä "+ohtuaika+" tuntia");
         
     }
 }
