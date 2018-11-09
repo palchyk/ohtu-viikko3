@@ -15,6 +15,13 @@ public class Submission {
     public ArrayList<Integer> getExercises() {
         return exercises;
     }
+    public int getExercisesSum() {
+        int apu = 0;
+        for (Integer exercise : exercises) {
+            apu+=exercise;
+        }
+        return apu;
+    }
 
     public void setExercises(ArrayList<Integer> exercises) {
         this.exercises = exercises;
@@ -39,13 +46,14 @@ public class Submission {
     public int getHours() {
         return hours;
     }
-    
+   
     
 
     @Override
     public String toString() {
         String teht =   exercises.toString().substring(1, exercises.toString().length()-1);
-        return course+", viikko "+week+" tehtyjä tehtäviä yhteensä "+exercises.size()+" aikaa kului "+hours+" tehdyt tehtävät: "+teht+" ";
+        //course+", viikko "+week+" tehtyjä tehtäviä yhteensä "+exercises.size()+
+        return " aikaa kului "+hours+" tehdyt tehtävät: "+teht+"\n";
     }
     
 }
