@@ -51,14 +51,7 @@ public class Main {
         Gson mapper = new Gson();
         Submission[] subs = mapper.fromJson(bodyText, Submission[].class);
         Submission[] subs2 = mapper.fromJson(bodyText2, Submission[].class);
-        
-//        Submission[] subs3 = mapper.fromJson(parsittuData, Submission[].class);
-//        int aikaa = 0;
-//        for (Submission submission : subs3) {
-//            aikaa+=submission.getExercisesSum();
-//        }
-//        System.out.println(aikaa+"___________");
-        
+  
         int teht = 0;
         int tunt = 0;
         int teht2 = 0;
