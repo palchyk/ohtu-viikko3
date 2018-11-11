@@ -29,7 +29,6 @@ public class Tester {
         element.click();
         element = driver.findElement(By.linkText("login"));
         element.click();
-        System.out.println(driver.getPageSource());
         Random r = new Random();
         element = driver.findElement(By.name("username"));
         element.sendKeys("pekka"+r.nextInt(100000));
