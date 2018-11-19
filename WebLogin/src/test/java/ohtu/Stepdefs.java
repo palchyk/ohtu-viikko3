@@ -50,7 +50,7 @@ public class Stepdefs {
 
     @When("^username \"([^\"]*)\" and password \"([^\"]*)\" are given$")
     public void username_and_password_are_given(String username, String password) throws Throwable {
-        WebElement element = driver.findElement(By.name("username"));
+        WebElement element = driver.findElement(By.name("username"));   
         element.sendKeys(username);
         element = driver.findElement(By.name("password"));
         element.sendKeys(password);
