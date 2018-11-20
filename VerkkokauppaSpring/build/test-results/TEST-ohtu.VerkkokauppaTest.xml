@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ohtu.VerkkokauppaTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2018-11-20T16:34:31" hostname="y50u-Lenovo-Y50-70-Touch" time="1.151">
+  <properties/>
+  <testcase name="testiTesti" classname="ohtu.VerkkokauppaTest" time="1.119"/>
+  <testcase name="kaksiEriTuotetta" classname="ohtu.VerkkokauppaTest" time="0.012"/>
+  <testcase name="ostoksenPaaytyttyaPankinMetodiaTilisiirtoKutsutaan" classname="ohtu.VerkkokauppaTest" time="0.003"/>
+  <testcase name="uusiAsiointi" classname="ohtu.VerkkokauppaTest" time="0.003"/>
+  <testcase name="uusiViitenumero" classname="ohtu.VerkkokauppaTest" time="0.003"/>
+  <testcase name="kaksiSamaaTuotetta" classname="ohtu.VerkkokauppaTest" time="0.003"/>
+  <testcase name="poistaKaupasta" classname="ohtu.VerkkokauppaTest" time="0.005"/>
+  <testcase name="kaksiTuotettaToinenLoppu" classname="ohtu.VerkkokauppaTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
