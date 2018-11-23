@@ -5,7 +5,13 @@
  */
 package laskin;
 
-  public interface Komento {
-    void suorita();
-}  
-
+/**
+ *
+ * @author y50u
+ */
+public interface Komento {
+    public void suorita();
+    public void peru();
+        
+    
+}

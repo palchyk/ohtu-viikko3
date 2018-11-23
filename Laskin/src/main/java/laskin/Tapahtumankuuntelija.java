@@ -6,7 +6,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
+//
 //public class Tapahtumankuuntelija implements EventHandler {
 //    private TextField tuloskentta; 
 //    private TextField syotekentta; 
@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 //    private Button nollaa;
 //    private Button undo;
 //    private Sovelluslogiikka sovellus;
-
+//
 //    public Tapahtumankuuntelija(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo) {
 //        this.tuloskentta = tuloskentta;
 //        this.syotekentta = syotekentta;
@@ -72,9 +72,9 @@ public class Tapahtumankuuntelija implements EventHandler {
         this.undo = undo;
         this.sovellus = new Sovelluslogiikka();
         komennot = new HashMap<>();
-//        komennot.put(plus, new Summa(tuloskentta, syotekentta,  nollaa, undo, sovellus) );
-//        komennot.put(miinus, new Erotus(tuloskentta, syotekentta, nollaa, undo, sovellus) );
-//        komennot.put(nollaa, new Nollaa(tuloskentta, syotekentta,  nollaa, undo, sovellus) );
+        komennot.put(plus, new Summa(tuloskentta, syotekentta,  nollaa, undo, sovellus) );
+        komennot.put(miinus, new Erotus(tuloskentta, syotekentta, nollaa, undo, sovellus) );
+        komennot.put(nollaa, new Nollaa(tuloskentta, syotekentta,  nollaa, undo, sovellus) );
     }
     
     @Override
@@ -84,7 +84,7 @@ public class Tapahtumankuuntelija implements EventHandler {
             komento.suorita();
             edellinen = komento;
         } else {
-            //edellinen.peru();
+            edellinen.peru();
             edellinen = null;
         }                  
     }

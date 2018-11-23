@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package laskin;
+package statistics.matcher;
+
+import statistics.Player;
 
 /**
  *
  * @author y50u
  */
-public class Nelio {
-    
+public class All implements Matcher {
+
+    @Override
+    public boolean matches(Player p) {
+        return true;
+    }
 }
